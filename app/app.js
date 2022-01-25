@@ -15,8 +15,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
-import { ThemeProvider } from '@material-ui/core';
-import { theme } from './utils/theme';
+import ThemeProvider from './utils/ThemeProvider';
 
 
 // Import root app
@@ -46,7 +45,7 @@ const render = messages => {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <ThemeProvider theme={theme}>
+          <ThemeProvider>
             <App />
           </ThemeProvider>
         </ConnectedRouter>
