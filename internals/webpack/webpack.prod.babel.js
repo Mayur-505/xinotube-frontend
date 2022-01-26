@@ -1,11 +1,13 @@
 // Important modules this config uses
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const OfflinePlugin = require('offline-plugin');
 const { HashedModuleIdsPlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+require('dotenv').config({ path: './.env.production' });
 
 module.exports = require('./webpack.base.babel')({
   mode: 'production',
@@ -113,6 +115,10 @@ module.exports = require('./webpack.base.babel')({
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
       minRatio: 0.8,
+    }),
+
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env),
     }),
 
     new WebpackPwaManifest({
