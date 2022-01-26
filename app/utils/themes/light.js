@@ -5,6 +5,15 @@ const primary = process.env.REACT_APP_PRIMARY_COLOR;
 const secondary = process.env.REACT_APP_SECONDARY_COLOR;
 
 export const lightTheme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 450,
+      md: 660,
+      lg: 900,
+      xl: 1200,
+    },
+  },
   palette: {
     primary: {
       main: primary,

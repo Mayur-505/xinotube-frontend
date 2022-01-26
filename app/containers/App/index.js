@@ -12,7 +12,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Register from '../Register/Loadable';
+import Register from 'containers/Register/Loadable';
 
 import GlobalStyle from '../../global-styles';
 

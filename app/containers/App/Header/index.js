@@ -18,10 +18,21 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
+import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import PrimarySearch from '../../../utils/search';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
+  icons: {
+    display: 'block',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
   root: {
     display: 'flex',
   },
@@ -81,6 +92,13 @@ const styles = theme => ({
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
   },
+  maintoolbar: {
+    justifyContent: 'space-between',
+  },
+  dflex: {
+    display: 'flex',
+    alignItems: 'center',
+  },
 });
 
 class MiniDrawer extends React.Component {
@@ -89,7 +107,11 @@ class MiniDrawer extends React.Component {
   };
 
   handleDrawerOpen = () => {
-    this.setState({ open: true });
+    if (this.state.open) {
+      this.setState({ open: true });
+    } else {
+      this.setState({ open: false });
+    }
   };
 
   handleDrawerClose = () => {
@@ -102,25 +124,31 @@ class MiniDrawer extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={classNames(classes.appBar, {
-            [classes.appBarShift]: this.state.open,
-          })}
-        >
-          <Toolbar disableGutters={!this.state.open}>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classNames(classes.menuButton, {
-                [classes.hide]: this.state.open,
-              })}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
-              Xinotube
+        <AppBar position="fixed" className={classNames(classes.appBar)}>
+          <Toolbar className={classes.maintoolbar} disableGutters>
+            <Typography className={classes.dflex}>
+              <IconButton
+                color="inherit"
+                aria-label="Open drawer"
+                onClick={this.handleDrawerOpen}
+                className={classNames(classes.menuButton)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" color="inherit" noWrap>
+                Xinotube
+              </Typography>
+            </Typography>
+            <Typography style={{ display: 'flex' }} className={classes.dflex}>
+              <PrimarySearch />
+              <Typography className={classes.icons}>
+                <CloudUploadOutlinedIcon />
+                <NotificationsNoneOutlinedIcon />
+                <SettingsOutlinedIcon />
+              </Typography>
+            </Typography>
+            <Typography className={classes.menuButton}>
+              <AccountCircle />
             </Typography>
           </Toolbar>
         </AppBar>
@@ -150,7 +178,7 @@ class MiniDrawer extends React.Component {
           <Divider />
           <List>
             {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text} selected>
+              <ListItem button key={text}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
