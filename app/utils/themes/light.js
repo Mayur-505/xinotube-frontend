@@ -1,15 +1,18 @@
 import { createTheme } from '@material-ui/core/styles';
 import { colors } from '@material-ui/core';
 
-const color = process.env.REACT_APP_PRIMARY_COLOR;
+const primary = process.env.REACT_APP_PRIMARY_COLOR;
+const secondary = process.env.REACT_APP_SECONDARY_COLOR;
 
 export const lightTheme = createTheme({
   palette: {
     primary: {
-      main: color,
+      main: primary,
+      contrastText: secondary,
     },
     secondary: {
-      main: '#97BC62',
+      main: secondary,
+      contrastText: primary,
     },
   },
   typography: {
