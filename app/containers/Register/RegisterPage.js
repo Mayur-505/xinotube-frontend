@@ -13,7 +13,7 @@ import CircleChecked from '@material-ui/icons/CheckCircleOutline';
 import CircleUnchecked from '@material-ui/icons/RadioButtonUnchecked';
 
 export default function RegisterPage() {
-  const paperStyle = { padding: '20px 20px', width: 900, margin: '20px auto' };
+  const paperStyle = { padding: '10px 10px', width: 850, margin: '20px ' };
   const useStyles = makeStyles({
     typography: {
       color: '#111',
@@ -23,8 +23,19 @@ export default function RegisterPage() {
       fontFamily:
         'Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
     },
+    typography1: {
+      color: '#71717a',
+      fontSize: '17px',
+
+      fontFamily:
+        'Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+    },
     textField: {
+      display: 'flex',
       marginTop: '20px',
+      width: '100%',
+      marginLeft: 'auto',
+      marginRight: 'auto',
     },
 
     signUpButton: {
@@ -54,23 +65,46 @@ export default function RegisterPage() {
       marginLeft: '7px',
       fontWeight: 'bold',
     },
+    img: {
+      backgroundColor: '#fef1f6',
+    },
+    root: {
+      '&$focused $notchedOutline': {
+        borderColor: '#bfdbfe',
+        borderWidth: '4px',
+      },
+    },
+    focused: {},
+    notchedOutline: {},
   });
   const classes = useStyles();
   return (
     <div className={classes.main}>
       <Container maxWidth="sm">
-        <Paper elevation={8} style={paperStyle}>
+        <Paper elevation={2} style={paperStyle}>
+          <Typography className={classes.typography}>Join</Typography>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              <Typography className={classes.typography}>Join</Typography>
               <TextField
                 className={classes.textField}
-                label="Email"
+                InputProps={{
+                  classes: {
+                    root: classes.root,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                }}
                 variant="outlined"
               />
               <TextField
                 className={classes.textField}
-                label="Password"
+                InputProps={{
+                  classes: {
+                    root: classes.root,
+                    focused: classes.focused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                }}
                 type="password"
                 variant="outlined"
               />
@@ -79,9 +113,11 @@ export default function RegisterPage() {
                 className={classes.checkbox}
                 icon={<CircleUnchecked />}
                 checkedIcon={<CircleChecked />}
+                inputProps={{ 'aria-label': 'primary checkbox' }}
               />{' '}
-              <Typography>sync my youtube channel</Typography>
-              <br />
+              <Typography className={classes.typography1}>
+                Sync my Youtube channel
+              </Typography>
               <br />
               <Button
                 href="#"
@@ -95,19 +131,20 @@ export default function RegisterPage() {
                 Log in
               </Button>
               <br />
-              <p>
+              <br />
+              <Typography className={classes.typography1}>
                 By creating an account, you agree to our terms and confirm
                 you're over the age of 13.
-              </p>
+              </Typography>
             </Grid>
-            <Grid item xs={6}>
-              <div className={classes.img}>
+            <div className={classes.img}>
+              <Grid item xs={6}>
                 <img
                   alt=""
                   src="https://cdn.lbryplayer.xyz/speech/odysee-sign-up:d.png"
                 />
-              </div>
-            </Grid>
+              </Grid>
+            </div>
           </Grid>
         </Paper>
       </Container>
