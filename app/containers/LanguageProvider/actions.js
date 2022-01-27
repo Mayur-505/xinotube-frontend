@@ -12,3 +12,10 @@ export function changeLocale(languageLocale) {
     locale: languageLocale,
   };
 }
+
+export function regUserData(userdata) {
+  return {
+    type: REGISTER_USER_DATA,
+    registeruserData: userdata,
+  };
+}

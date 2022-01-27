@@ -6,14 +6,30 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import CircleChecked from '@material-ui/icons/CheckCircleOutline';
 import CircleUnchecked from '@material-ui/icons/RadioButtonUnchecked';
+import { register } from '../../utils/xino-api';
+
 
 export default function RegisterPage() {
   const paperStyle = { padding: '20px 20px', width: 850, margin: '20px ' };
+
+  const [state,setstate]= useState({
+    username:'admin123456789xyzuhn7uyhnj',
+    gender:'male',
+    email:'',
+    password:'',
+
+  })
+
+  React.useEffect(() => {
+ console.log("signdata",state);
+  }, [state]);
+  
+
   const useStyles = makeStyles({
     typography: {
       color: '#111',
@@ -78,6 +94,24 @@ export default function RegisterPage() {
     notchedOutline: {},
   });
   const classes = useStyles();
+  const userData = async(e)=>{
+    const formData = new FormData()
+    formData.append('v', '1.0');
+    formData.append('server_key', '1312a113c58715637a94437389326a49');
+    formData.append('username', state.username);
+    formData.append('email', state.email);
+    formData.append('password', state.password);
+    formData.append('confirm_password', state.password);
+    formData.append('gender', state.gender);
+
+    try {
+    const reg = await register(formData)
+    console.log("reggg",reg);
+    }
+    catch (err) {
+      console.error(err)
+    }
+  }
   return (
     <div className={classes.main}>
       <Container maxWidth="sm">
@@ -88,6 +122,7 @@ export default function RegisterPage() {
               <Typography className={classes.typography1}>Email</Typography>
               <TextField
                 className={classes.textField}
+                onChange={(e)=>{setstate({...state,email:e.target.value})}}
                 InputProps={{
                   classes: {
                     root: classes.root,
@@ -100,6 +135,7 @@ export default function RegisterPage() {
               />
               <Typography className={classes.typography1}>Password</Typography>
               <TextField
+              onChange={(e)=>{setstate({...state,password:e.target.value})}}
                 className={classes.textField}
                 InputProps={{
                   classes: {
@@ -128,6 +164,7 @@ export default function RegisterPage() {
                 variant="contained"
                 color="primary"
                 className={classes.signUpButton}
+                onClick={userData}
               >
                 Sign up
               </Button>
