@@ -15,12 +15,14 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Register from 'containers/Register/Loadable';
 
 import GlobalStyle from '../../global-styles';
+import LoginPage from '../LoginPage';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/login" component={LoginPage} />
         <Route exact path="/signup" component={Register} />
         <Route component={NotFoundPage} />
       </Switch>

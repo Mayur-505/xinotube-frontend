@@ -8,6 +8,8 @@ const prettierOptions = JSON.parse(
 module.exports = {
   parser: 'babel-eslint',
   extends: ['airbnb', 'prettier', 'prettier/react'],
+  target: "ES6",
+  lib: ["DOM", "ES6", "DOM.Iterable", "ScriptHost", "ES2016.Array.Include"],
   plugins: ['prettier', 'redux-saga', 'react', 'react-hooks', 'jsx-a11y'],
   env: {
     jest: true,
@@ -23,7 +25,7 @@ module.exports = {
     },
   },
   rules: {
-    'prettier/prettier': ['error', prettierOptions],
+    // 'prettier/prettier': ['error', prettierOptions],
     'arrow-body-style': [2, 'as-needed'],
     'class-methods-use-this': 0,
     'import/imports-first': 0,
@@ -59,7 +61,7 @@ module.exports = {
     'max-len': 0,
     'newline-per-chained-call': 0,
     'no-confusing-arrow': 0,
-    'no-console': 1,
+    // 'no-console': 1,
     'no-unused-vars': 2,
     'no-use-before-define': 0,
     'prefer-template': 2,
