@@ -6,8 +6,6 @@ import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -108,20 +106,8 @@ class MiniDrawer extends React.Component {
     open: false,
   };
 
-  state = {
-    anchorEl: null,
-    mobileMoreAnchorEl: null,
-  };
-
-
-  handleMenuClose = () => {
-    this.setState({ anchorEl: null });
-    this.handleMobileMenuClose();
-  };
-
-
   handleDrawerOpen = () => {
-    if (this.state.open) {
+    if (!this.state.open) {
       this.setState({ open: true });
     } else {
       this.setState({ open: false });
@@ -134,8 +120,6 @@ class MiniDrawer extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-    const { anchorEl } = this.state;
-    const open = Boolean(anchorEl);
 
     return (
       <div className={classes.root}>
@@ -163,24 +147,9 @@ class MiniDrawer extends React.Component {
                 <SettingsOutlinedIcon />
               </Typography>
             </Typography>
-            <Menu
-              className={classes.menuButton}
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={open}
-              onClose={this.handleClose}
-            >
-              <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-              <MenuItem onClick={this.handleClose}>My account</MenuItem>
-            </Menu>
+            <Typography className={classes.menuButton}>
+              <AccountCircle />
+            </Typography>
           </Toolbar>
         </AppBar>
         <Drawer
