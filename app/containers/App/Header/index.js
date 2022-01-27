@@ -107,7 +107,7 @@ class MiniDrawer extends React.Component {
   };
 
   handleDrawerOpen = () => {
-    if (this.state.open) {
+    if (!this.state.open) {
       this.setState({ open: true });
     } else {
       this.setState({ open: false });
