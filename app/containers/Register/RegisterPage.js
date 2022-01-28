@@ -41,15 +41,12 @@ export default function RegisterPage() {
       marginTop: '25px',
       color: '#71717a',
       fontSize: '19px',
-
       fontFamily:
         'Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
     },
     textField: {
       display: 'flex',
       marginTop: '20px',
-      width: '100%',
-
       marginLeft: 'auto',
       marginRight: 'auto',
       backgroundColor: '#f3f4f6',
@@ -72,7 +69,6 @@ export default function RegisterPage() {
     },
     loginButton: {
       marginTop: '20px',
-
       color: 'primary',
       fontSize: '20px',
       fontFamily:

@@ -9,6 +9,8 @@
 
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { withRouter } from 'react-router';
+
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -16,8 +18,10 @@ import Register from 'containers/Register/Loadable';
 
 import GlobalStyle from '../../global-styles';
 import LoginPage from '../LoginPage';
+import Forgot from '../LoginPage/Forgot'
+import '../../../docs/css/App.css'
 
-export default function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Switch>
@@ -30,3 +34,5 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
+export default withRouter(App);

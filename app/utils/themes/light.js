@@ -28,11 +28,12 @@ export const lightTheme = createTheme({
     fontFamily: 'Times New Roman',
     fontSize: 15,
     h1: {
-      // incase
+    
       fontFamily: 'Roboto',
       fontSize: 15,
     },
   },
+ 
   shape: {
     borderRadius: 15,
   },
@@ -44,6 +45,24 @@ export const lightTheme = createTheme({
           backgroundColor: colors.lightBlue[100],
         },
       },
+    },
+    MuiOutlinedInput: {
+      root : {
+        padding: '0 !important',
+        '&input': {
+          padding:'0px 0px !important',
+
+        },
+      }
+    },
+    MuiTextField: {
+      root : {
+        '&input': {
+          padding:'10px 14px',
+
+        },
+
+      }
     },
   },
 });
